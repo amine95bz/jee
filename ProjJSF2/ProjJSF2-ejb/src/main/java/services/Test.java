@@ -15,7 +15,7 @@ public class Test implements TestRemote,TestLocale {
 	public void Consommation() {
 		// create new jax-rs Client
 		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target("http://localhost:63238/api/RecWebApi");
+		WebTarget target = client.target("http://jeedep-env.p9ijm22fnf.eu-west-1.elasticbeanstalk.com/api/RecWebApi");
 		WebTarget hello =target.path("");
 		Response response =hello.request().get();
 		
