@@ -1,0 +1,24 @@
+
+<ui:composition template="../TRY.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<ui:define name="content">
+		<h:form id="form2">
+
+			<h:panelGrid columns="2">
+				<h:outputText value="ResponseText" style="font-weight:bold" />
+				<h:inputText value="#{answerBean.responseTextv}"
+					styleClass="form-control" label="adresse">
+				</h:inputText>
+			</h:panelGrid>
+
+			<h:commandButton action="#{answerBean.AjouterAnswer()}"
+				value="Ajouter" />
+		</h:form>
+
+	</ui:define>
+</ui:composition>

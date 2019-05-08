@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html" template="frontEnd.xhtml">
+
+	<h1>Question page</h1>
+
+	<h:form id="form">
+
+	QuestionId
+	<p:inputText value="#{questionBean.questionId}"></p:inputText>
+
+		<h:commandButton action="#{questionBean.doGetAll()}"
+			value="Entrez Id" />
+
+
+
+		<p:dataTable value="#{questionBean.doGetAll()}" var="e" border="1"
+			rows="10">
+			<p:column width="50">
+				<f:facet name="header">
+					<h:outputText value="" />
+				</f:facet>
+			</p:column>
+
+
+			<p:column width="100">
+				<f:facet name="header">QuestionId</f:facet>
+				<h:outputText value="#{e.questionId}" />
+				</p:column>
+
+			<p:column width="100">
+				<f:facet name="header">QuestionText</f:facet>
+				<h:outputText value="#{e.questionText}" />
+				</p:column>
+				
+			<p:column width="100">
+				<f:facet name="header">Domain</f:facet>
+				<h:outputText value="#{e.domain}" />
+				</p:column>
+				
+			<p:column width="100">
+				<f:facet name="header">ResponseId</f:facet>
+				<h:outputText value="#{e.responseId}" />
+				</p:column>
+							
+		
+
+			<p:column width="100">
+				<f:facet name="header"></f:facet>
+				<h:commandButton action="#{questionBean.EditQuestion(e.questionId)}"
+					value="Modifier" />
+			</p:column>
+
+			<p:column width="100">
+				<f:facet name="header"></f:facet>
+				<h:commandButton action="#{questionBean.RemoveQuestion(e.questionId)}"
+					value="Supprimer" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</ui:composition>

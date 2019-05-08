@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html" template="BackEnd.xhtml"
+	xmlns:rich="http://richfaces.org/rich">
+	<ui:define name="content">
+
+		<h:form id="form">
+
+			<p:dataTable class="table text-nowrap" value="#{packBean.packss}"
+				var="e" border="1" cellspacing="8" width="100%"
+				rowClasses="paire,impaire" headerClass="titre">
+
+				<p:column width="100">
+					<f:facet name="header">PackName</f:facet>
+					<h:outputText value="#{e.packName}" />
+				</p:column>
+				<p:column width="100">
+					<f:facet name="header">Description</f:facet>
+					<h:outputText value="#{e.description}" />
+				</p:column>
+				<p:column width="100">
+					<f:facet name="header">price</f:facet>
+					<h:outputText value="#{e.price}" />
+				</p:column>
+				<p:column width="100">
+					<f:facet name="header">Nombre client</f:facet>
+					<h:outputText value="#{e.nbClient}" />
+				</p:column>
+				<p:column width="100">
+					<f:facet name="header"></f:facet>
+					<h:commandButton action="#{packBean.modifier(e)}" value="Modifier"
+						style=" width : 116px;" />
+					<h:commandButton action="#{packBean.supprimer(e.packId)}"
+						value="supprimer" style=" width : 117px;" />
+				</p:column>
+			</p:dataTable>
+
+			<div class="form-group">
+				<h:panelGrid columns="2" class="about-content">
+					<h:outputText value="Packname" />
+					<h:inputText value="#{packBean.packName}" />
+
+					<h:outputText value="Description" />
+					<h:inputText value="#{packBean.description}" />
+
+					<h:outputText value="NOmbre de clients" />
+					<h:inputText value="#{packBean.nbClient}" />
+
+					<h:outputText value="Prix" />
+					<h:inputText value="#{packBean.price}" />
+					<h:commandButton action="#{packBean.addPack()}"
+						value="Ajouter Pack" style=" width : 114px;" />
+					<h:commandButton action="#{packBean.mettreAjourPack()}"
+						value="MettreAjour" style=" width : 129px;" />
+				</h:panelGrid>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

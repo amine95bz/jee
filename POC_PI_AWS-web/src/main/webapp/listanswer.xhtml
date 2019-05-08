@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<h1>Question page</h1>
+
+	<h:form id="form">
+
+	QuestionId
+	<p:inputText value="#{answerBean.answerId}"></p:inputText>
+
+		<h:commandButton action="#{answerBean.doGetAnswer()}"
+			value="Entrez Id" />
+
+
+
+		<p:dataTable value="#{answerBean.doGetAll()}" var="e" border="1"
+			rows="10">
+			<p:column width="50">
+				<f:facet name="header">
+					<h:outputText value="" />
+				</f:facet>
+			</p:column>
+
+
+			<p:column width="100">
+				<f:facet name="header">ResponseId</f:facet>#{e.responseId}</p:column>
+
+			<p:column width="100">
+				<f:facet name="header">ResponseText</f:facet>#{e.responseText}</p:column>
+								
+			
+			<p:column width="100">
+				<f:facet name="header"></f:facet>
+				<h:commandButton action="#{answerBean.IndexGetAll()}"
+					value="Envoyer mail" />
+			</p:column>
+
+			<p:column width="100">
+				<f:facet name="header"></f:facet>
+				<h:commandButton action="#{answerBean.EditAnswer(e.responseId)}"
+					value="Modifier" />
+			</p:column>
+
+			<p:column width="100">
+				<f:facet name="header"></f:facet>
+				<h:commandButton action="#{answerBean.RemoveAnswer(e.responseId)}"
+					value="Supprimer" />
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+
+</ui:composition>

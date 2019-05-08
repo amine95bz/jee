@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+>
+	
+	<ui:define name="title" > All Employees </ui:define>	
+	<ui:define name="content">
+	
+	<h:form>
+	
+	<h:dataTable value="#{packBean.packss}" var="p" border="1"  rowClasses="paire,impaire" headerClass="titre">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="PackName"/>
+			</f:facet>
+			<h:outputText value="#{p.packName}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Description"/>
+			</f:facet>
+			<h:outputText value="#{p.description}"/>
+		</h:column>
+		
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Action"/>
+			</f:facet>
+			<h:commandButton action="" value="supprimer"/>
+			<h:commandButton action="" value="modifier"/>
+		</h:column>
+
+	<h:panelGrid columns="2">
+			<h:outputText value="Packname" />
+			<h:inputText value="#{packBean.packName}" />
+
+			<h:outputText value="Description" />
+			<h:inputText value="#{packBean.description}" />
+
+			<h:outputText value="NOmbre de clients" />
+			<h:inputText value="#{packBean.nbClient}" />
+
+			<h:outputText value="Prix" />
+			<h:inputText value="#{packBean.price}" />	
+			<h:commandButton action="#{packBean.addPack()}"
+				value="Ajouter Pack" />
+			<h:commandButton action="#{packBean.modifier()}"
+				value="MettreAjour" />
+				
+		</h:panelGrid>
+		</h:dataTable>
+</h:form>	
+	</ui:define>
+
+</ui:composition>
+
