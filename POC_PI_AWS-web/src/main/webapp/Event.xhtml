@@ -1,0 +1,107 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui"
+template="Template.xhtml">
+<ui:define name="title"> Gestion des Categories :</ui:define>
+    <ui:define name="content">
+<h:form>
+
+		
+	
+			
+<h:dataTable class="table table-striped custom-table m-b-0 datatable" value="#{eventConBean.allEvents}" var="cp" id="tab">
+
+				
+                
+                	<h:column >
+				   <f:facet name="header" class="warning">
+                    <h:outputText value="Id" />
+                     </f:facet>
+				     <h:outputText value="#{cp.eventId}" />
+				   </h:column>
+                  
+					<h:column >
+				   <f:facet name="header" class="warning">
+                    <h:outputText value="Subject" />
+                     </f:facet>
+				     <h:outputText value="#{cp.subject}" />
+				   </h:column>
+			
+			
+			
+					<h:column >
+				   <f:facet name="header" class="warning">
+                    <h:outputText value="Description" />
+                     </f:facet>
+				     <h:outputText value="#{cp.description}" />
+				   </h:column>
+			
+			
+			
+				   
+				   
+					   <h:column >
+				   <f:facet name="header" class="warning">
+                    <h:outputText value="Start" />
+                     </f:facet>
+				     <h:outputText value="#{cp.start}" />
+				   </h:column>
+				
+				
+				
+				
+				
+				
+				
+				
+								   <h:column >
+				   <f:facet name="header" class="warning">
+                    <h:outputText value="End" />
+                     </f:facet>
+				     <h:outputText value="#{cp.end}" />
+				   </h:column>
+			
+			
+			
+					<h:column>
+				<f:facet name="header">
+					<h:outputText value="Action" />
+				</f:facet>
+				
+				<h:commandButton action="#{eventConBean.sup(cp.eventId)}"
+					value="supprimer" />
+					<h:commandButton action="#{eventConBean.modifier(cp.eventId)}"
+					value="Modifier" />
+
+			</h:column>
+					
+				
+			
+	
+				
+			</h:dataTable>
+			<p:panel header="Export All Data">
+            <h:commandLink>
+                <p:graphicImage value="/icons/xls.png" />
+                <p:dataExporter type="xls" postProcessor="#{eventConBean.postProcessXLS}"
+                    target="tab" fileName="myexcel" />
+            </h:commandLink>
+            <h:commandLink>
+                <p:graphicImage value="/icons/pdf.png" />
+                <p:dataExporter type="pdf" target="tab" fileName="mypdf" />
+            </h:commandLink>
+        </p:panel>					
+								
+	
+		</h:form>
+		
+	</ui:define>
+
+</ui:composition>
+
+
+    
+
