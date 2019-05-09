@@ -1,0 +1,91 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="FrontEnd.xhtml">
+   
+  <div>
+  
+  <ui:define name="content">
+
+	<h:form>
+   <div class="card">
+        <div class="card-header header-elements-inline">
+            <h3 class="card-title">Update Publication #{publicationBean.publicationId} </h3>
+            <div class="header-elements">
+                <div class="list-icons">
+                    <a class="list-icons-item" data-action="collapse"></a>
+                    <a class="list-icons-item" data-action="reload"></a>
+                    <a class="list-icons-item" data-action="remove"></a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+         
+
+
+            <div class="form-group row">
+                <label class="col-lg-3 col-form-label"><b class="animated  zoomInUp delay-1s">Title :</b></label>
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                           <h:inputText value="#{publicationBean.title}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-lg-3 col-form-label"><b class="animated  zoomInUp delay-1s">Your description :</b></label>
+                <div class="col-lg-9">
+                   
+                     <h:inputTextarea  value="#{publicationBean.description}"  />
+                </div>
+            </div>
+
+          <div class="form-group row">
+                <label class="col-lg-3 col-form-label"><b class="animated  zoomInUp delay-1s">Image :</b></label>
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <div class="col-md-10">
+                           <h:inputText value="#{publicationBean.image}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="form-group row">
+                   <h:outputText value="Role "/>
+	<h:selectOneMenu value="#{publicationBean.visibility}">
+	<f:selectItem itemLabel="Select visibility level" itemValue=""></f:selectItem>
+	<f:selectItems value="#{visibilityData.visibilities}"></f:selectItems>
+	</h:selectOneMenu>
+                
+                </div>
+
+               
+
+             
+                <div class="text-right">
+
+
+                    
+
+					<h:commandButton action="#{publicationBean.UpdatePub()}"  id="toastr" class="btn btn-primary animated  fadeIn infinite delay-1s"  value="Submit"><i class="icon-paperplane ml-2"></i></h:commandButton>
+                    <script type="text/javascript">
+
+                            function create() {
+                                toastr.success("Your Pub was updated succefully !");
+                            }
+                    </script>
+
+                </div>
+                <div class="text-left">
+                    
+                    <h:commandButton action="#{publicationBean.BackToPub()}"  style="background-color:transparent" class="btn" value="Back to list" ><i class="icon-home ml-2"></i></h:commandButton>
+                </div></div></div>
+  </h:form>
+
+
+  </ui:define>
+  </div>
+
+</ui:composition> 

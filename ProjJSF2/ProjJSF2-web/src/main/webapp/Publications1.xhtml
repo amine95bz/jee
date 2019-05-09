@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/include/header.xhtml">
+	
+	
+	<ui:define name="content">
+<h:form>
+	
+	<h:dataTable value="#{publicationBean.pubss}" var="p" border="2" cellspacing="4">
+
+		<h:column>
+	<f:facet name="header">
+	<h:outputText value="ID" />
+	</f:facet>
+	<h:outputText value="#{p.publicationId}" />
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">
+	<h:outputText value="Title" />
+	</f:facet>
+	<h:outputText value="#{p.title}" />
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">
+	<h:outputText value="Description" />
+	</f:facet>
+	<h:outputText value="#{p.description}" />
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">
+	<h:outputText value="ImageName" />
+	</f:facet>
+	<h:outputText value="#{p.image}" />
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">
+	<h:outputText value="CreationDate" />
+	</f:facet>
+	<h:outputText value="#{p.creationDate}" />
+	</h:column>
+	
+	</h:dataTable>
+	
+	</h:form>
+	</ui:define>
+	
+	
+</ui:composition>

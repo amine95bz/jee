@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:panelGrid columns="2">
+	<h:form>
+	
+	<h:outputText value="login(email)"/>
+	<h:inputText value="#{employeBean.email}"/>
+	<h:outputText value="password"/>
+	<h:inputSecret value="#{employeBean.password}"/>
+	<h:outputText value="Prenom"/>
+	<h:inputText value="#{employeBean.prenom}"/>
+	<h:outputText value="nom"/>
+	<h:inputText value="#{employeBean.nom}"/>
+	<h:outputText value="Actif / Inactif "/>
+	<h:selectBooleanCheckbox value="#{employeBean.actif}"/>
+	<h:outputText value="Role "/>
+	<h:selectOneMenu value="#{employeBean.role}">
+	<f:selectItem itemLabel="Selectionner le role" itemValue=""></f:selectItem>
+	<f:selectItems value="#{data.roles}"></f:selectItems>
+	</h:selectOneMenu>
+	<h:commandButton action="#{employeBean.addEmploye()}" value="Ajouter employé"/>
+</h:form>
+
+</h:panelGrid>
+</html>

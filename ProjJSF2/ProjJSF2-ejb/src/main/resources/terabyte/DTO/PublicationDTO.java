@@ -4,10 +4,11 @@ package tn.esprit.terabyte.DTO;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.ejb.Stateful;
 import javax.persistence.*;
 
 
-
+@Stateful
 public class PublicationDTO  implements Serializable{
 
 	private int PublicationId ;
@@ -15,7 +16,7 @@ public class PublicationDTO  implements Serializable{
 	private String description ;
 	private String image ;
 	private Visibility visibility ;
-	
+	private int  nbSig;
 	private String creationDate ;
 	private String ownerimg;
 	private String nomuser;
@@ -142,6 +143,16 @@ public class PublicationDTO  implements Serializable{
 
 	public void setOwnerId(String ownerId) {
 		OwnerId = ownerId;
+	}
+
+
+	public int getNbSig() {
+		return nbSig;
+	}
+
+
+	public void setNbSig(int nbSig) {
+		this.nbSig = nbSig;
 	}
 
 	

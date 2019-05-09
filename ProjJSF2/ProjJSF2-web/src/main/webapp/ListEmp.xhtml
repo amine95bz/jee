@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+	<h:dataTable value="#{employeBean.employes}" var="employe" border="2" cellspacing="4">
+	<h:column>
+	<f:facet name="header">
+	<h:outputText value="email" />
+	</f:facet>
+	<h:outputText value="#{employe.email}" />
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">
+	<h:outputText value="nom" />
+	</f:facet>
+	<h:outputText value="#{employe.nom}" />
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">
+	<h:outputText value="prenom" />
+	</f:facet>
+	<h:outputText value="#{employe.prenom}" />
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">
+	<h:outputText value="role" />
+	</f:facet>
+	<h:outputText value="#{employe.role}" />
+	</h:column>
+	
+	<h:column>
+	<f:facet name="header">
+	<h:outputText value="Actif" />
+	</f:facet>
+	<h:outputText value="#{employe.isActif==true ? 'oui' : 'non'}" />
+	</h:column>
+	</h:dataTable>
+	
+	</html>

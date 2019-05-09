@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="FrontEnd.xhtml">
+   
+  <div>
+  
+  <ui:define name="content">
+  <h:form>
+  <div class="card">
+    <div class="card-body">
+        <div class="mb-4">
+            <div class="mb-3 text-center">
+                <a href="#" class="d-inline-block">
+                    <img src="b0dca.jpg" class="img-fluid" alt=""></img>
+                </a>
+            </div>
+
+            <h4 class="font-weight-semibold mb-1">
+              <h:outputLabel value="#{publicationBean.title}" />
+               
+            </h4>
+
+            <ul class="list-inline list-inline-dotted text-muted mb-3">
+                <li class="list-inline-item">
+    <img src="b0dca.jpg" alt="" height="60" width="60" ></img>
+    <strong>by <i class="red-color">Foudhaili Feres</i></strong>
+   
+          </li>
+                <li class="list-inline-item"> #{publicationBean.creationDate}</li>
+                <li class="list-inline-item">NB  comments</li>
+                <li class="list-inline-item"><div id="@Model.PublicationId"><p style="text-align:center"> #{publicationBean.nbLike(publicationBean.publicationId)} <i class="icon-heart6 font-size-base text-pink mr-2"></i> </p></div></li>
+            </ul>
+
+            <div class="mb-3">
+                <p> #{publicationBean.description}</p>
+            </div>
+
+            <div class="card card-body bg-light rounded-left-0 border-left-3 border-left-warning">
+                <blockquote class="blockquote d-flex mb-0">
+                   
+
+                    <div class="form-group row">
+                        
+                        <div class="col-lg-9">
+                            <textarea id="comm" class="form-control" rows = "3" cols = "300" placeholder="Write Comments here..."></textarea>
+                            <i class="fa fa-pencil-square-o"></i>
+                        </div></div>
+                </blockquote>
+            </div>
+        </div>
+       
+            <div id="Divcomment">
+            <ui:repeat value="#{publicationBean.comments}" var="c">
+            <h:panelGroup rendered="${ c.publicationId==publicationBean.publicationId}">
+                <div class="single-testimonial item d-flex flex-row">
+                            <div class="thumb">
+                                <img class="img-fluid" src="img/t1.png" alt=""></img>
+                            </div>
+                            <div class="desc">
+                            <h4 mt-30="" style="color: red">By feres foudhaili</h4>
+                                <p>
+                                    #{c.contenu}
+                                </p>
+                                
+                               <h:commandButton action="#{publicationBean.DelComment(c)}" value="Delete" />
+                            </div>
+                           
+                        </div>
+                         
+                        </h:panelGroup>
+                        </ui:repeat>
+            </div>
+
+
+        </div>
+</div>
+  
+  </h:form>
+  </ui:define>
+  </div>
+
+</ui:composition> 

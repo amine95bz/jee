@@ -1,0 +1,122 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="FrontEnd.xhtml">
+	
+	
+	<ui:define name="content">
+<h:form>
+
+<div class="content-wrapper">
+
+    
+
+    <main class="main-content">
+
+        <!-- Blog -->
+
+        <div class="row">
+
+            <!-- Blog Content -->
+            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-7 r-full-width">
+
+                <!-- Blog List View -->
+                <div class="blog-list-View theme-padding-bottom">
+	 <ui:repeat value="#{publicationBean.pubss}" var="item">
+            <div class="extended_modals">
+          
+ 
+<div style="width:120%">
+    <div class="card blog-horizontal">
+        <div class="card-body">
+            <div class="card-img-actions mr-sm-3 mb-3 mb-sm-0">
+                <a href="#course_preview" data-toggle="modal">
+                    <img src="b0dca.jpg" alt="" style="height: 300 ; width: 400" ></img>
+                    <div class="card-img-actions-overlay card-img">
+                        <a href="" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round" data-popup="lightbox" rel="group">
+                            <i class="icon-zoomin3"></i>
+                        </a>
+                    </div>
+                </a>
+            </div>
+
+            <div class="mb-3">
+                <h5 class="d-flex font-weight-semibold flex-nowrap my-1">
+                    <a href="#" class="text-default mr-2">#{item.title}</a>
+
+                    <span class="text-success ml-auto">Share</span>
+                </h5>
+
+                <ul class="list-inline list-inline-dotted text-muted mb-0">
+                    <li class="list-inline-item">By <a href="#" class="text-muted">Feres Foudhaili</a></li>
+
+                </ul>
+            </div>
+
+
+
+           #{item.description}
+        </div>
+        <i style="margin-left:80%" class="enddate"> #{item.creationDate}</i>
+        <div class="card-footer d-sm-flex justify-content-sm-between align-items-sm-center">
+        <p style="text-align:center"> #{publicationBean.nbLike(item.publicationId)} Person like this publication </p>
+            <ul class="list-inline list-inline-dotted mb-0">
+                <h:commandButton action="#{publicationBean.details(item)}" value="Details" />
+                 
+              
+                 <h:panelGroup rendered="${ publicationBean.likeExist(item.publicationId)}">
+    				<h:commandButton action="${publicationBean.DelLike(item.publicationId)}" value="Dislike" />
+                </h:panelGroup>
+                <h:panelGroup rendered="${ !(publicationBean.likeExist(item.publicationId))}">
+    				<h:commandButton action="${publicationBean.addLike(item.publicationId)}" value="Like" />
+                </h:panelGroup>
+                <h:panelGroup rendered="${ !(publicationBean.SigExist(item.publicationId))}">
+    				<h:commandButton action="${publicationBean.Signaler(item.publicationId)}" value="Signaler" />
+                </h:panelGroup>
+                
+
+
+            </ul>
+
+            <div class="mt-2 mt-sm-0">
+                <table>
+                    <tr>
+                        <th style="text-align:center"><h:commandButton action="#{publicationBean.DelPub(item)}" value="Delete" /></th>
+                        <th><p>---</p></th>
+                        <th style="text-align:center"><h:commandButton action="#{publicationBean.modifier(item)}" value="Update" /><i style="color:forestgreen" class="fa fa-pencil fa fa-lg"></i></th>
+                        <th><p>---</p></th>
+                        
+                 
+    <th style="text-align:center"><h:commandButton action="#{publicationBean.printPDR(item)}" value="Print-PDF" /></th>
+
+                        
+                    
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+            
+        </ui:repeat> 
+                       </div>
+            </div>
+        </div>
+
+
+    </main>
+
+
+</div> 
+	</h:form>
+	</ui:define>
+	
+	
+</ui:composition>
